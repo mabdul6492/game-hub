@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
   Skeleton,
+  SkeletonText,
 } from "@chakra-ui/react";
 import useGenre, { Genre } from "../hooks/useGenre";
 import getCroppedImageUrl from "../services/image-url";
@@ -27,7 +28,15 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
         {isLoading &&
           skeletons.map((skeleton) => (
             <ListItem key={skeleton} paddingY="5px">
-              <Skeleton height="50px" borderRadius={5} />
+              <HStack>
+                <Skeleton height="32px" borderRadius={5} width="32px" />
+                <SkeletonText
+                  noOfLines={2}
+                  height="32px"
+                  borderRadius={5}
+                  flexGrow="100"
+                />
+              </HStack>
             </ListItem>
           ))}
         {data.map((genre) => (
